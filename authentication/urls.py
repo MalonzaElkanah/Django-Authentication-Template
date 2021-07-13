@@ -28,4 +28,12 @@ urlpatterns = [
     path('new-password/', views.new_password, name='new-password'),
     path('logout/', views.logout_user, name='logout'),
     path('reset-password/', views.reset_password, name='reset-password'),
+
+    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(
+        template_name='authentication/password-reset-done.html'), name='password_reset_done'),
+    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(
+        template_name="authentication/password-reset-confirm.html"), name='password_reset_confirm'),
+    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(
+        template_name='authentication/password-reset-complete.html'), name='password_reset_complete'),      
+
 ]
